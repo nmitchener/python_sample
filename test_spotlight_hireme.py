@@ -24,11 +24,11 @@ class TestClass:
     def test_01_create(b, cls):
         # create
         b.go('/spotlight')
-        sleep(1)
+        sleep(3)
         b.contains('Hire me').click()
 
         # locations
-        sleep(.5)
+        sleep(3)
         b.find_elements_by_css_selector('input.location')[0].send_keys('austin')
         b.contains('Texas').click()
         b.contains('Add location').click()
@@ -122,7 +122,7 @@ class TestClass:
     @autobrowser
     def test_07_delete(b, cls):
         b.go('/spotlight')
-        sleep(1)
+        sleep(3)
         b.contains('Delete this Spotlight').click()
 
         # wait for page change
