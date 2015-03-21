@@ -1,0 +1,77 @@
+Project Instructions
+
+ 1) Set up the environment
+      i. Download and install VirtualBox
+     ii. Download OVM and sample project files 
+           https://www.dropbox.com/sh/j7f7pog3sw3rbq7/AABX72ga7A0g0lLY9vRHv4Voa
+    iii. Install OVM appliance. The username and password are both "test".
+         Instructions for installing an OVM are here:
+           http://grok.lsu.edu/article.aspx?articleid=13838
+     iv. Move the sample files to the VM (or download them inside the VM)
+      v. Make sure the sample test runs inside the VM
+          a. Open the terminal and navigate to your sample files directory
+          b. Run the test in the way described below
+          c. It should run but one of the tests should fail
+
+ 2) Fix the sample test so that it passes. The test is just a sample and not
+    meant to be a complete test of the feature it covers. There's no need to
+    change what it tests - just find the cause of the failure and fix it.
+
+ 3) Write a new test for login. You can use the same user as the sample test
+    (username: justa_tester, password: testing1).
+      i. Be as comprehensive as you can. Attempt to cover all functionality
+         related to login.
+     ii. Implement the most important things first and stub out things you
+         don't have time to implement.
+    iii. Document your assumptions and the pros and cons of the decisions you
+         made.
+     iv. Document things you would do differently or additionally if you hit a
+         wall somewhere.
+
+ 4) When you're done, zip up the directory that you downloaded (containing your
+    new test) and email it to the interview team.
+
+Code Overview
+
+The selenium browser object is also known as WebDriver. For info on its native
+methods and capabilities, read the WebDriver API documentation
+<http://selenium-python.readthedocs.org/en/latest/api.html#module-selenium.webdriver.remote.webelement>.
+
+We use a wrapper around the selenium browser object that's defined in 
+utils.Browser. You can call any method defined in that class and also any of
+the WebDriver class that it wraps. There are methods defined in our Browser
+class to do things like register, log in, log out, and various other commonly
+used things.
+
+Running tests in a shell
+
+This is the best way to run/debug tests when you're working on them. Here's how
+you would run test_spotlight_hireme.py
+
+$ ipython
+
+In [1]: import utils
+
+In [2]: import test_spotlight_hireme
+
+In [3]: b = utils.run_numbered_tests(test_spotlight_hireme)
+
+That should run the tests contained in test_spotlight_hireme.py until they all
+pass or until an exception happens or an assert fails.
+
+You can also drive a browser from the shell to help you write your tests.
+Here's an example of creating a browser, login and clicking the Account
+Settings link::
+
+In [4]: b = utils.get_browser()
+
+In [5]: b.login('justa_tester')
+
+In [6]: b('.accountlinks .accountmenu .menu-toggle').click()
+
+In [7]: b('a[href="/account/"]').click()
+
+In [8]: b.contains('Account Settings', 'a').click()
+
+
+Online Instructions: https://gist.github.com/NigelKibodeaux/2326cd66c1c5a946501a
