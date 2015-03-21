@@ -45,10 +45,10 @@ class TestClass:
         b('.skills .delete').click()
 
         # work history
-        b.find_elements_by_css_selector('input.workhistory')[0].send_keys('microsoft')
+        b.find_elements_by_css_selector('input.work_history')[0].send_keys('microsoft')
         b.contains('Microsoft').click()
         b.contains('Add more companies').click()
-        b.find_elements_by_css_selector('input.workhistory')[1].send_keys('cisco')
+        b.find_elements_by_css_selector('input.work_history')[1].send_keys('cisco')
         b.contains('Cisco').click()
 
         # education
